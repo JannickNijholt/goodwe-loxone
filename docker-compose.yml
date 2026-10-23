@@ -1,0 +1,12 @@
+services:
+  goodwe-modbus:
+    build: .
+    container_name: goodwe-modbus
+    restart: unless-stopped
+    # Host networking: Loxone reaches port 502 directly and UDP to the inverter needs no NAT.
+    network_mode: host
+    environment:
+      TZ: Europe/Amsterdam          # midnight reset of "Energy today" uses local time
+      GOODWE_HOST: 192.168.1.50     # inverter IP
+      # GOODWE_MODBUS_PORT: "502"   # use e.g. 503 if onecta-modbus runs on the same host
+      # GOODWE_ALLOW_WRITES: "1"

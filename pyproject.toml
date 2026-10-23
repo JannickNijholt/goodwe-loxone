@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "goodwe-modbus"
+dynamic = ["version"]
+description = "GoodWe inverter (UDP 8899) to Modbus TCP bridge with the inverter's own register map (for Loxone)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+# Same library as the Home Assistant GoodWe integration
+dependencies = ["goodwe>=0.4.8,<0.5"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+goodwe-modbus = "goodwe_modbus.__main__:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "goodwe_modbus.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

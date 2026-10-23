@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+*.local.*
+.DS_Store
+# Raw inverter dumps contain the serial number; commit sanitized copies only
+*.raw.json
+*.egg-info/
+build/
+dist/
+.pytest_cache/
